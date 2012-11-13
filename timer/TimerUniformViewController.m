@@ -34,7 +34,7 @@
     }
     //Add code here that displays the images onto something
     
-	_takePictureButton.hidden=YES;
+	_takePictureButton.hidden=NO;
     timer=[NSTimer scheduledTimerWithTimeInterval:3600 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
