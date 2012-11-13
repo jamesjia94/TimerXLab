@@ -21,13 +21,19 @@
 {
     [super viewDidLoad];
 	_takePictureButton.hidden=YES;
-    timer=[NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
+    timer=[NSTimer scheduledTimerWithTimeInterval:3600 target:self selector:@selector(timerFired) userInfo:nil repeats:YES];
 }
 
 -(void)timerFired
 {
     _takePictureButton.hidden=NO;
+    UIApplication* app = [UIApplication sharedApplication];
+    UILocalNotification* alarm = [[UILocalNotification alloc] init];
+    alarm.fireDate = nil;
+    alarm.alertBody = @"Check timer!";
+    [app presentLocalNotificationNow:(alarm)];
 }
+
 - (IBAction)takePicture:(UIButton *)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     if([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera])
